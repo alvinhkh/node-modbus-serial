@@ -81,6 +81,7 @@ This module has not been tested on every single version of NodeJS. For best resu
 * modbus-RTU (UdpPort): Over C701 server, commercial UDP to serial bridge.
 * modbus-RTU (TcpRTUBufferedPort): Over TCP/IP line, TCP/IP serial RTU buffered device.
 * modbus-RTU (TelnetPort): Over Telnet server, TCP/IP serial bridge.
+* modbus-RTU (MqttPort): Over MQTT server, TCP/IP serial bridge.
 
 ###### Server
 

@@ -47,6 +47,10 @@ export class ModbusRTU {
   linkTelnet(socket: Socket, options: TelnetPortOptions): Promise<void>;
   connectRTUSocket(socket: Socket, next: Function): void;
   connectRTUSocket(socket: Socket): Promise<void>;
+  connectBle(options: BlePortOptions, next: Function): void;
+  connectBle(options: BlePortOptions): Promise<void>;
+  connectMqtt(url: string, pubTopic: string, subTopic: string, options: MqttPortOptions, next: Function): void;
+  connectMqtt(url: string, pubTopic: string, subTopic: string, options: MqttPortOptions): Promise<void>;
 
   // Promise API
   setID(id: number): void;

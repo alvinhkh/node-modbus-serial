@@ -1202,6 +1202,8 @@ module.exports.TcpPort = require("./ports/tcpport");
 module.exports.TcpRTUBufferedPort = require("./ports/tcprtubufferedport");
 module.exports.TelnetPort = require("./ports/telnetport");
 module.exports.C701Port = require("./ports/c701port");
+module.exports.BlePort = require("./ports/bleport");
+module.exports.MqttPort = require("./ports/mqttport");
 
 module.exports.ServerTCP = require("./servers/servertcp");
 module.exports.ServerSerial = require("./servers/serverserial");

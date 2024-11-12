@@ -398,7 +398,7 @@ const addConnctionAPI = function(Modbus) {
     /**
      * Connect to existing client socket.
      *
-     * @param {socket} socket the socket to connect to - required.
+     * @param {Object} options - the ble options - optional.
      * @param {Function} next the function to call next.
      */
     cl.connectBle = function(options, next) {
@@ -419,6 +419,38 @@ const addConnctionAPI = function(Modbus) {
             options.timeout = this._timeout;
         }
         this._port = new BlePort(options);
+
+        // open and call next
+        return open(this, next);
+    };
+
+    /**
+     * Connect to existing client socket.
+     *
+     * @param {string} url the url of the MQTT broker - required.
+     * @param {string} pubTopic the write topic - required.
+     * @param {string} subTopic the read topic - required.
+     * @param {Object} options - the mqtt client options - optional.
+     * @param {Function} next the function to call next.
+     */
+    cl.connectMqtt = function(url, pubTopic, subTopic, options, next) {
+        // check if we have options
+        if (typeof next === "undefined" && typeof options === "function") {
+            next = options;
+            options = {};
+        }
+
+        // check if we have options
+        if (typeof options === "undefined") {
+            options = {};
+        }
+
+        // create the MqttPort
+        const MqttPort = require("../ports/mqttport");
+        if (this._timeout) {
+            options.connectTimeout = this._timeout;
+        }
+        this._port = new MqttPort(url, pubTopic, subTopic, options);
 
         // open and call next
         return open(this, next);
